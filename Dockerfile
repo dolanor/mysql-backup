@@ -13,6 +13,7 @@ RUN apk update \
 &&  chmod +x /usr/local/bin/restic
 
 WORKDIR /backup
+COPY wait-for-it.sh /
 COPY restic-backup.sh /
 RUN chmod +x /restic-backup.sh
 
