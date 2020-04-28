@@ -1,4 +1,4 @@
-FROM alpine
+FROM debian
 
 ENV RESTIC_REPOSITORY \
     MYSQL_HOST \
@@ -7,8 +7,8 @@ ENV RESTIC_REPOSITORY \
     MYSQL_PASSWORD \
     BACKUP_FILENAME
 
-RUN apk update \
-&&  apk add mysql-client curl bash \
+RUN apt-get update \
+&&  apt-get install -y mysql-client curl bash bzip2 \
 &&  curl -L https://github.com/restic/restic/releases/download/v0.9.5/restic_0.9.5_linux_amd64.bz2 | bunzip2 > /usr/local/bin/restic \
 &&  chmod +x /usr/local/bin/restic
 
